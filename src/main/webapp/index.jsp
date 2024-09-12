@@ -28,7 +28,7 @@
     <button type="submit" class="btn-signin">Log in</button>
 
     <div class="signup-link">
-      <p>Nao tem uma conta? <a href="signup.html">Cadastro</a></p>
+      <p>Nao tem uma conta? <a href="cadastro.jsp">Cadastro</a></p>
     </div>
   </form>
 </div>

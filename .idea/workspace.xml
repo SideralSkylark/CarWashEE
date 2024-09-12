@@ -10,17 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f330a129-d44e-475f-bad5-47559f94dadf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ClienteServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/EmpresarialServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/cliente.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/empresarial.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/estilos/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/CadastroServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/HelloServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/LogInServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/LogInServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cadastro.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cadastro.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cadastro.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +161,7 @@
       <workItem from="1726065361427" duration="276000" />
       <workItem from="1726066146958" duration="6000" />
       <workItem from="1726066674120" duration="4000" />
-      <workItem from="1726144012226" duration="4133000" />
+      <workItem from="1726144012226" duration="5777000" />
     </task>
     <servers />
   </component>

@@ -14,7 +14,7 @@
 <body>
 <div class="login-container">
   <form action="cadastro" method="POST" class="login-form">
-    <h2>Sign Up</h2>
+    <h2>Cadastrar</h2>
 
     <div class="input-field">
       <input type="text" id="nome" name="nome" placeholder="Nome" required>
@@ -32,10 +32,10 @@
       <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme a Password" required>
     </div>
 
-    <button type="submit" class="btn-signin">Sign Up</button>
+    <button type="submit" class="btn-signin">Cadastrar</button>
 
     <div class="signup-link">
-      <p>Ja tem uma conta? <a href="/login.html">Sign In</a></p>
+      <p>Ja tem uma conta? <a href="index.jsp">Log in</a></p>
     </div>
   </form>
 </div>
