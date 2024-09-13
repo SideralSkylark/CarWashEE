@@ -5,13 +5,13 @@ import java.math.BigDecimal;
 public class Servico {
     private int id;
     private String descricao;
-    private TipoServico tipoServico;
-    private Plano plano;
+    private String tipoServico;
+    private String plano;
     private BigDecimal preco;
 
     public Servico() {}
 
-    public Servico(int id, String descricao, TipoServico tipoServico, Plano plano, BigDecimal preco) {
+    public Servico(int id, String descricao, String  tipoServico, String plano, BigDecimal preco) {
         this.id = id;
         this.descricao = descricao;
         this.tipoServico = tipoServico;
@@ -36,19 +36,19 @@ public class Servico {
         this.descricao = descricao;
     }
 
-    public TipoServico getTipoServico() {
+    public String  getTipoServico() {
         return tipoServico;
     }
 
-    public void setTipoServico(TipoServico tipoServico) {
+    public void setTipoServico(String  tipoServico) {
         this.tipoServico = tipoServico;
     }
 
-    public Plano getPlano() {
+    public String getPlano() {
         return plano;
     }
 
-    public void setPlano(Plano plano) {
+    public void setPlano(String plano) {
         this.plano = plano;
     }
 
