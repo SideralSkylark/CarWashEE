@@ -53,9 +53,9 @@ public class LogInServlet extends HttpServlet {
             session.setAttribute("usuarioLogado", usuario);
 
             if (usuario.getTipoUsuario().equals("EMPRESARIAL")) {
-                response.sendRedirect("empresarial.jsp");
+                response.sendRedirect("empresarial");
             } else {
-                response.sendRedirect("cliente.jsp");
+                response.sendRedirect("cliente");
             }
         } else {
             // Login falhou, redireciona de volta para a página de login com uma mensagem de erro

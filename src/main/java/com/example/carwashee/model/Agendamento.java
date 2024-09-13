@@ -1,5 +1,6 @@
 package com.example.carwashee.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Agendamento {
@@ -12,10 +13,11 @@ public class Agendamento {
     private Plano plano;
     private StatusAgendamento status;
     private Servico servico; // Opcional: para obter detalhes do serviço
+    private BigDecimal preco;
 
     public Agendamento() {}
 
-    public Agendamento(int id, int usuarioId, int servicoId, LocalDate data, String descricao, TipoServico tipoServico, Plano plano, String status) {
+    public Agendamento(int id, int usuarioId, int servicoId, LocalDate data, String descricao, TipoServico tipoServico, Plano plano, StatusAgendamento status, BigDecimal preco) {
         this.id = id;
         this.usuarioId = usuarioId;
         this.servicoId = servicoId;
@@ -23,7 +25,22 @@ public class Agendamento {
         this.descricao = descricao;
         this.tipoServico = tipoServico;
         this.plano = plano;
-        this.status = StatusAgendamento.valueOf(status);
+        this.status = status;
+        this.preco = preco;
+    }
+
+    public Agendamento(int usuarioId, int servicoId, String descricao, LocalDate data) {
+        this.usuarioId = usuarioId;
+        this.servicoId = servicoId;
+        this.descricao = descricao;
+        this.data = data;
+    }
+
+    public Agendamento(String descricao, LocalDate data, int servicoId, int id) {
+        this.descricao = descricao;
+        this.data = data;
+        this.id = id;
+        this.servicoId = servicoId;
     }
 
     // Getters e Setters
@@ -99,6 +116,14 @@ public class Agendamento {
         this.servico = servico;
     }
 
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
+    }
+
     @Override
     public String toString() {
         return "Agendamento{" +
@@ -111,6 +136,7 @@ public class Agendamento {
                 ", plano=" + plano +
                 ", status=" + status +
                 ", servico=" + servico +
+                ", preco=" + preco +
                 '}';
     }
 }

@@ -1,9 +1,6 @@
 package com.example.carwashee.dao;
 
-import com.example.carwashee.model.Agendamento;
-import com.example.carwashee.model.Servico;
-import com.example.carwashee.model.StatusAgendamento;
-import com.example.carwashee.model.Usuario;
+import com.example.carwashee.model.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,15 +19,13 @@ public class AgendamentoDAO {
     }
 
     public boolean adicionarAgendamento(Agendamento agendamento) throws SQLException {
-        String sql = "INSERT INTO agendamentos (usuario_id, servico_id, data, descricao, tipo_servico, plano, status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO agendamentos (usuario_id, servico_id, data, descricao, status) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, agendamento.getUsuarioId());
             stmt.setInt(2, agendamento.getServicoId());
             stmt.setDate(3, java.sql.Date.valueOf(agendamento.getData())); // Converte LocalDate para java.sql.Date
             stmt.setString(4, agendamento.getDescricao());
-            stmt.setString(5, agendamento.getTipoServico().name());
-            stmt.setString(6, agendamento.getPlano().name());
-            stmt.setString(7, "PENDENTE"); // Defina um status padrão ou ajuste conforme necessário
+            stmt.setString(5, "PENDENTE"); // Defina um status padrão ou ajuste conforme necessário
             int rowsInserted = stmt.executeUpdate();
             return rowsInserted > 0;
         }
@@ -47,15 +42,26 @@ public class AgendamentoDAO {
         }
     }
 
-    public boolean atualizarAgendamento(Agendamento agendamento) throws SQLException {
-        String sql = "UPDATE agendamentos SET servico_id = ?, data = ?, descricao = ?, tipo_servico = ?, plano = ? WHERE id = ?";
+    public boolean editarAgendamento(Agendamento agendamento) throws SQLException {
+        String sql = "UPDATE agendamentos SET descricao = ?, data = ?, servico_id = ?, status = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, agendamento.getServicoId());
+            stmt.setString(1, agendamento.getDescricao());
             stmt.setDate(2, java.sql.Date.valueOf(agendamento.getData())); // Converte LocalDate para java.sql.Date
-            stmt.setString(3, agendamento.getDescricao());
-            stmt.setString(4, agendamento.getTipoServico().name());
-            stmt.setString(5, agendamento.getPlano().name());
-            stmt.setInt(6, agendamento.getId());
+            stmt.setInt(3, agendamento.getServicoId());
+            stmt.setString(4, agendamento.getStatus().name()); // Assume que você tem um enum StatusAgendamento
+            stmt.setInt(5, agendamento.getId());
+            int rowsUpdated = stmt.executeUpdate();
+            return rowsUpdated > 0;
+        }
+    }
+
+    public boolean editarAgendamentoCliente(Agendamento agendamento) throws SQLException {
+        String sql = "UPDATE agendamentos SET descricao = ?, data = ?, servico_id = ? WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, agendamento.getDescricao());
+            stmt.setDate(2, java.sql.Date.valueOf(agendamento.getData())); // Converte LocalDate para java.sql.Date
+            stmt.setInt(3, agendamento.getServicoId());
+            stmt.setInt(4, agendamento.getId());
             int rowsUpdated = stmt.executeUpdate();
             return rowsUpdated > 0;
         }
@@ -98,12 +104,12 @@ public class AgendamentoDAO {
         }
         return agendamentosAtivos;
     }
-
-    public Servico encontrarServicoPorTipoEPlano(String tipoServico, String plano) throws SQLException {
+/*
+    public Servico encontrarServicoPorTipoEPlano(TipoServico tipoServico, Plano plano) throws SQLException {
         String sql = "SELECT * FROM servicos WHERE tipo_servico = ? AND plano = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, tipoServico);
-            stmt.setString(2, plano);
+            stmt.setString(1, String.valueOf(tipoServico));
+            stmt.setString(2, String.valueOf(plano));
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     // Supondo que você tenha um construtor em Servico que aceita os parâmetros abaixo
@@ -120,6 +126,8 @@ public class AgendamentoDAO {
             }
         }
     }
+
+ */
 
     public List<Agendamento> buscarTodosAgendamentos() throws SQLException {
         String sql = "SELECT * FROM agendamentos";
@@ -158,6 +166,7 @@ public class AgendamentoDAO {
         agendamento.setServicoId(rs.getInt("servico_id"));
         agendamento.setData(rs.getDate("data").toLocalDate());
         agendamento.setStatus(StatusAgendamento.valueOf(rs.getString("status")));
+        agendamento.setDescricao(rs.getString("descricao"));
         // Adicione outros mapeamentos conforme necessário
         return agendamento;
     }
@@ -226,4 +235,38 @@ public class AgendamentoDAO {
             return rowsAffected > 0;
         }
     }
+
+    public List<Agendamento> buscarAgendamentosComServicoPorUsuarioId(int usuarioId) throws SQLException {
+        List<Agendamento> agendamentos = new ArrayList<>();
+        String sql = "SELECT a.id, a.descricao, a.data, a.status, s.descricao AS servico, s.plano, s.preco " +
+                "FROM agendamentos a " +
+                "JOIN servicos s ON a.servico_id = s.id " +
+                "WHERE a.usuario_id = ? AND a.status <> 'CONFIRMADO'";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, usuarioId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Agendamento agendamento = new Agendamento();
+                    agendamento.setId(rs.getInt("id"));
+                    agendamento.setDescricao(rs.getString("descricao"));
+                    agendamento.setData(rs.getDate("data").toLocalDate());
+                    agendamento.setStatus(StatusAgendamento.valueOf(rs.getString("status")));
+
+                    // Dados do serviço
+                    Servico servico = new Servico();
+                    servico.setDescricao(rs.getString("servico"));
+                    servico.setPlano(Plano.valueOf(rs.getString("plano")));
+                    servico.setPreco(rs.getBigDecimal("preco"));
+
+                    agendamento.setServico(servico);
+
+                    agendamentos.add(agendamento);
+                }
+            }
+        }
+        return agendamentos;
+    }
+
 }

@@ -90,4 +90,40 @@ public class ServicoDAO {
             return rowsAffected > 0;
         }
     }
+
+    public Servico buscarPrecoPorTipoEPlano(TipoServico tipoServico, Plano plano) throws SQLException {
+        String sql = "SELECT * FROM servicos WHERE tipo_servico = ? AND plano = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, tipoServico.name());
+            stmt.setString(2, plano.name());
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return mapResultSetToServico(rs);
+                }
+            }
+        }
+        return null;
+    }
+
+    public List<Servico> obterServicosPorPlano(Plano plano) throws SQLException {
+        List<Servico> servicos = new ArrayList<>();
+        String sql = "SELECT * FROM servicos WHERE plano = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, plano.name());
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Servico servico = new Servico();
+                servico.setId(rs.getInt("id"));
+                servico.setDescricao(rs.getString("descricao"));
+                servico.setTipoServico(TipoServico.valueOf(rs.getString("tipo_servico")));
+                servico.setPlano(Plano.valueOf(rs.getString("plano")));
+                servico.setPreco(rs.getBigDecimal("preco"));
+                servicos.add(servico);
+            }
+        }
+
+        return servicos;
+    }
 }

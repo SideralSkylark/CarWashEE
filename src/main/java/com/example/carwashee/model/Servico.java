@@ -11,16 +11,15 @@ public class Servico {
 
     public Servico() {}
 
-    public Servico(int id, String descricao, String tipoServico, String plano, BigDecimal preco) {
+    public Servico(int id, String descricao, TipoServico tipoServico, Plano plano, BigDecimal preco) {
         this.id = id;
         this.descricao = descricao;
-        this.tipoServico = TipoServico.valueOf(tipoServico);
-        this.plano = Plano.valueOf(plano);
+        this.tipoServico = tipoServico;
+        this.plano = plano;
         this.preco = preco;
     }
 
-    // Getters and Setters
-
+    // Getters e Setters
     public int getId() {
         return id;
     }
