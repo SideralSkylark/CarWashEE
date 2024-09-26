@@ -17,7 +17,6 @@ import java.sql.SQLException;
 public class CadastroServlet extends HttpServlet {
     private Connection connection;
     private UsuarioDAO usuarioDAO;
-    private Usuario usuario;
 
     private String nome, email, password;
 
@@ -48,7 +47,7 @@ public class CadastroServlet extends HttpServlet {
         password = request.getParameter("password");
 
         if (camposPrenchidos()) {
-            usuario = criarUsuario(nome, email, password);
+            Usuario usuario = criarUsuario(nome, email, password);
             usuarioDAO.adicionarUsuario(usuario);
 
             response.sendRedirect("index.jsp");

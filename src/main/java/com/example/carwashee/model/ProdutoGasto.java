@@ -1,5 +1,10 @@
 package com.example.carwashee.model;
 
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,9 +79,9 @@ public class ProdutoGasto {
     }
 
     //por no marcar como concluido
-    /*
-    public void concluirAgendamento(int idServico) {
-    ProdutoGasto produtoGasto = new ProdutoGasto(idServico);
+
+    public void concluirAgendamento() {
+    ProdutoGasto produtoGasto = new ProdutoGasto(this.id_Servico);
     List<Produto> produtosUsados = produtoGasto.obterQuantidadeGasta();
 
     // Para cada produto usado, envie uma requisição de atualização
@@ -111,9 +116,6 @@ public class ProdutoGasto {
             e.printStackTrace();
         }
     }
-
-    // Marcar o agendamento como concluído
-    marcarAgendamentoComoConcluido(idServico);
 }
-    */
+
 }

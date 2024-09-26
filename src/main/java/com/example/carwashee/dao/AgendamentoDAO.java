@@ -43,7 +43,7 @@ public class AgendamentoDAO {
                     agendamento.setServicoId(rs.getInt("servico_id"));
                     agendamento.setData(rs.getDate("data").toLocalDate());
                     agendamento.setStatus(StatusAgendamento.valueOf(rs.getString("status")));
-                    agendamento.setDescricao(rs.getString("descricao"));
+
                     return agendamento;
                 } else {
                     return null; // Agendamento não encontrado
@@ -51,7 +51,26 @@ public class AgendamentoDAO {
             }
         }
     }
+    public List<Agendamento> buscarAgendamentosPorStatus(String status) throws SQLException {
+        List<Agendamento> agendamentos = new ArrayList<>();
+        String sql = "SELECT * FROM agendamentos WHERE status = ?";
 
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, status);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Agendamento agendamento = new Agendamento();
+                agendamento.setId(resultSet.getInt("id"));
+                agendamento.setUsuarioId(resultSet.getInt("usuario_id"));
+                agendamento.setServicoId(resultSet.getInt("servico_id"));
+                agendamento.setData(resultSet.getDate("data").toLocalDate());
+                agendamento.setStatus(StatusAgendamento.valueOf(resultSet.getString("status")));
+                // Adicione outros campos conforme necessário
+                agendamentos.add(agendamento);
+            }
+        }
+        return agendamentos;
+    }
     public void adicionarAgendamento(int usuarioId, int servicoId, LocalDate data, String descricao) throws SQLException {
         String sql = "INSERT INTO agendamentos (usuario_id, servico_id, data, descricao) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -165,7 +184,7 @@ public class AgendamentoDAO {
         }
     }
 
-    public List<Agendamento> buscarAgendamentosAtivos() throws SQLException {
+    public List<Agendamento>buscarAgendamentosAtivos() throws SQLException {
         List<Agendamento> agendamentosAtivos = new ArrayList<>();
         String sql = "SELECT * FROM agendamentos WHERE status <> 'CONFIRMADO'";
 
@@ -187,9 +206,9 @@ public class AgendamentoDAO {
         agendamento.setServicoId(rs.getInt("servico_id"));
         agendamento.setData(rs.getDate("data").toLocalDate());
         agendamento.setStatus(StatusAgendamento.valueOf(rs.getString("status")));
-        agendamento.setDescricao(rs.getString("descricao")); // Verifique se 'descricao' é retornada pela consulta
         return agendamento;
     }
+
     public List<Agendamento> buscarAgendamentosPorUsuarioId(int usuarioId) throws SQLException {
         String sql = "SELECT a.id, a.usuario_id, a.servico_id, a.data, a.status, s.descricao " +
                 "FROM agendamentos a " +

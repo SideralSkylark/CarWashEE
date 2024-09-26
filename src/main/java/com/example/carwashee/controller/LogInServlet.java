@@ -53,7 +53,7 @@ public class LogInServlet extends HttpServlet {
             session.setAttribute("usuarioLogado", usuario);
 
             if (usuario.getTipoUsuario().equals("EMPRESARIAL")) {
-                response.sendRedirect("empresarial.jsp");
+                response.sendRedirect("EmpresarialServlet");
             } else {
                 response.sendRedirect("cliente");
             }

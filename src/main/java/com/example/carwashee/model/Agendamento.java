@@ -6,6 +6,7 @@ import java.time.LocalDate;
 public class Agendamento {
     private int id;
     private int usuarioId;
+    private String usuarioNome;
     private int servicoId;
     private LocalDate data;
     private String descricao;
@@ -122,6 +123,14 @@ public class Agendamento {
 
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
+    }
+
+    public String getUsuarioNome() {
+        return usuarioNome;
+    }
+
+    public void setUsuarioNome(String usuarioNome) {
+        this.usuarioNome = usuarioNome;
     }
 
     @Override
