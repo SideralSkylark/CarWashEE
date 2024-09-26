@@ -10,20 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f330a129-d44e-475f-bad5-47559f94dadf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/detalhesAgendamentos.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/estilos/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/scripts/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/PrecoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ServicoPlanoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/estilos/cliente.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/scripts/cliente.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/EmpresarialServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/EmpresarialServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ClienteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ClienteServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/LogInServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/LogInServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/AgendamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/AgendamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/ServicoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/ServicoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/Agendamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/Agendamento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/Servico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/empresarial.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/empresarial.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/estilos/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cliente.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +32,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="Jsp File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="Class" />
       </list>
     </option>
@@ -83,15 +83,10 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Maven.CarWashEE [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.CarWashEE [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.CarWashEE [package].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Smart Tomcat.Tomcat: CarWashEE.executor&quot;: &quot;Run&quot;,
     &quot;Tomcat Server.Tomcat 10.1.28.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/paulo_/Documents/apache-tomcat-10.1.29&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -101,7 +96,20 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Smart Tomcat.Tomcat: CarWashEE">
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="CarWashEE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="CarWashEE" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 10.1.28" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.28" ALTERNATIVE_JRE_ENABLED="false">
       <deployment>
         <artifact name="CarwashEE:war exploded">
@@ -140,32 +148,6 @@
         </option>
       </method>
     </configuration>
-    <configuration name="Tomcat: CarWashEE" type="com.poratu.idea.plugins.tomcat">
-      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
-      <predefined_log_file enabled="true" id="Tomcat Access Log" />
-      <predefined_log_file id="Tomcat Catalina Log" />
-      <predefined_log_file id="Tomcat Manager Log" />
-      <predefined_log_file id="Tomcat Host Manager Log" />
-      <option name="catalinaBase" value="$USER_HOME$/Documents/apache-tomcat-10.1.29" />
-      <option name="contextPath" value="/CarWashEE" />
-      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
-      <option name="extraClassPath" value="" />
-      <option name="tomcatInfo">
-        <TomcatInfo>
-          <option name="name" value="Apache Tomcat/10.1.29" />
-          <option name="path" value="$USER_HOME$/Documents/apache-tomcat-10.1.29" />
-          <option name="version" value="10.1.29.0" />
-        </TomcatInfo>
-      </option>
-      <option name="vmOptions" value="" />
-      <module name="CarWashEE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Smart Tomcat.Tomcat: CarWashEE" />
-    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -189,7 +171,9 @@
       <workItem from="1726065361427" duration="276000" />
       <workItem from="1726066146958" duration="6000" />
       <workItem from="1726066674120" duration="4000" />
-      <workItem from="1726144012226" duration="5777000" />
+      <workItem from="1726144012226" duration="6875000" />
+      <workItem from="1726155959498" duration="11624000" />
+      <workItem from="1726209789966" duration="13000000" />
     </task>
     <servers />
   </component>

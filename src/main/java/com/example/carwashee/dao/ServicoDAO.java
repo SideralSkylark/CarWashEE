@@ -20,17 +20,24 @@ public class ServicoDAO {
         this.connection = connection;
     }
 
-    public Servico buscarServicoPorId(int servicoId) throws SQLException {
+    public Servico obterServicoPorId(int id) throws SQLException {
         String sql = "SELECT * FROM servicos WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, servicoId);
+            stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    return mapResultSetToServico(rs);
+                    Servico servico = new Servico();
+                    servico.setId(rs.getInt("id"));
+                    servico.setDescricao(rs.getString("descricao"));
+                    servico.setTipoServico(TipoServico.valueOf(rs.getString("tipo_servico")));
+                    servico.setPlano(Plano.valueOf(rs.getString("plano")));
+                    servico.setPreco(BigDecimal.valueOf(rs.getBigDecimal("preco").doubleValue()));
+                    return servico;
+                } else {
+                    return null; // Serviço não encontrado
                 }
             }
         }
-        return null;
     }
 
     public List<Servico> buscarTodosServicos() throws SQLException {

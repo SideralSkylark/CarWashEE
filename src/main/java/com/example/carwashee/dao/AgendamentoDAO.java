@@ -31,6 +31,27 @@ public class AgendamentoDAO {
         }
     }
 
+    public Agendamento obterAgendamentoPorId(int id) throws SQLException {
+        String sql = "SELECT * FROM agendamentos WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Agendamento agendamento = new Agendamento();
+                    agendamento.setId(rs.getInt("id"));
+                    agendamento.setUsuarioId(rs.getInt("usuario_id"));
+                    agendamento.setServicoId(rs.getInt("servico_id"));
+                    agendamento.setData(rs.getDate("data").toLocalDate());
+                    agendamento.setStatus(StatusAgendamento.valueOf(rs.getString("status")));
+                    agendamento.setDescricao(rs.getString("descricao"));
+                    return agendamento;
+                } else {
+                    return null; // Agendamento não encontrado
+                }
+            }
+        }
+    }
+
     public void adicionarAgendamento(int usuarioId, int servicoId, LocalDate data, String descricao) throws SQLException {
         String sql = "INSERT INTO agendamentos (usuario_id, servico_id, data, descricao) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
