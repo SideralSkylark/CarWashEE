@@ -15,7 +15,6 @@ public class ProdutoDAO {
         this.connection = DatabaseConnection.getConnection();
     }
 
-    // Método para obter todos os produtos
     public List<Produto> obterTodos() throws SQLException {
         String sql = "SELECT * FROM produto";
         List<Produto> produtos = new ArrayList<>();
@@ -36,17 +35,72 @@ public class ProdutoDAO {
         return produtos;
     }
 
-    // Método para adicionar um novo produto
-    public boolean adicionarProduto(Produto produto) throws SQLException {
-        String sql = "INSERT INTO produto (tipo_produto, quantia) VALUES (?, ?)";
+    // Método para atualizar a quantidade de um produto existente
+    public boolean atualizarProduto(TipoProduto tipoProduto, int valor) throws SQLException {
+        String sqlObterQuantidade = "SELECT quantia FROM produto WHERE tipo_produto = ?";
+        String sqlAtualizar = "UPDATE produto SET quantia = ? WHERE tipo_produto = ?";
 
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, String.valueOf(produto.getTipoProduto()));
-            pstmt.setInt(2, produto.getQuantia());
-            int rowsAffected = pstmt.executeUpdate();
-            return rowsAffected > 0;
+        try (PreparedStatement pstmtObterQuantidade = connection.prepareStatement(sqlObterQuantidade);
+             PreparedStatement pstmtAtualizar = connection.prepareStatement(sqlAtualizar)) {
+
+            // Primeiro, buscamos a quantidade atual do produto
+            pstmtObterQuantidade.setString(1, tipoProduto.name());
+            ResultSet rs = pstmtObterQuantidade.executeQuery();
+
+            if (rs.next()) {
+                int quantidadeAtual = rs.getInt("quantia");
+                int novaQuantidade = quantidadeAtual + valor;  // Incrementa ou decrementa a quantidade
+
+                // Impede que a quantidade fique negativa
+                if (novaQuantidade < 0) {
+                    novaQuantidade = 0;
+                }
+
+                pstmtAtualizar.setInt(1, novaQuantidade);
+                pstmtAtualizar.setString(2, tipoProduto.name());
+                pstmtAtualizar.executeUpdate();
+
+                return true;
+            } else {
+                return false;  // Produto não encontrado
+            }
+
         } catch (SQLException e) {
-            throw new SQLException("Erro ao adicionar produto", e);
+            throw new SQLException("Erro ao atualizar produto", e);
+        }
+    }
+
+    // Método para adicionar ou atualizar o produto
+    public boolean adicionarOuAtualizarProduto(Produto produto) throws SQLException {
+        String sqlObterQuantidade = "SELECT quantia FROM produto WHERE tipo_produto = ?";
+        String sqlAtualizar = "UPDATE produto SET quantia = ? WHERE tipo_produto = ?";
+        String sqlInserir = "INSERT INTO produto (tipo_produto, quantia) VALUES (?, ?)";
+
+        try (PreparedStatement pstmtObterQuantidade = connection.prepareStatement(sqlObterQuantidade);
+             PreparedStatement pstmtAtualizar = connection.prepareStatement(sqlAtualizar);
+             PreparedStatement pstmtInserir = connection.prepareStatement(sqlInserir)) {
+
+            pstmtObterQuantidade.setString(1, produto.getTipoProduto().name());
+            ResultSet rs = pstmtObterQuantidade.executeQuery();
+
+            if (rs.next()) {
+                // Produto já existe, então vamos atualizar
+                int quantidadeAtual = rs.getInt("quantia");
+                int novaQuantidade = quantidadeAtual + produto.getQuantia();
+                pstmtAtualizar.setInt(1, novaQuantidade);
+                pstmtAtualizar.setString(2, produto.getTipoProduto().name());
+                pstmtAtualizar.executeUpdate();
+            } else {
+                // Produto não existe, vamos inserir um novo
+                pstmtInserir.setString(1, produto.getTipoProduto().name());
+                pstmtInserir.setInt(2, produto.getQuantia());
+                pstmtInserir.executeUpdate();
+            }
+
+            return true;
+
+        } catch (SQLException e) {
+            throw new SQLException("Erro ao adicionar ou atualizar produto", e);
         }
     }
 

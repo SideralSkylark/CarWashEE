@@ -10,22 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f330a129-d44e-475f-bad5-47559f94dadf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/AdicionarProdutoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/EditarProdutoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ObterProdutosServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ProdutoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/RemoverProdutoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/ProdutoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/Produto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/ProdutoEdicao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/ProdutoRemocao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/TipoProduto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/estilos/produto.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/produto.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/scripts/produto.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/AtualizarProdutoServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/EmpresarialServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/EmpresarialServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/empresarial.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/empresarial.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/AdicionarProdutoServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/RemoverProdutoServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/ProdutoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/ProdutoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/produto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/produto.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/scripts/produto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/scripts/produto.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +125,21 @@
       <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -193,7 +200,8 @@
       <workItem from="1726735523314" duration="206000" />
       <workItem from="1727029661379" duration="153000" />
       <workItem from="1727071664434" duration="42000" />
-      <workItem from="1727332588682" duration="8636000" />
+      <workItem from="1727332588682" duration="10178000" />
+      <workItem from="1727351293371" duration="6647000" />
     </task>
     <servers />
   </component>

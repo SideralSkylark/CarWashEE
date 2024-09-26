@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Produto</title>
@@ -61,11 +62,11 @@
             <span class="close" id="closeModal">&times;</span>
             <h2>Adicionar produto</h2>
             <form id="appointmentForm">
-                <label for="descricao">Plano:</label>
+                <label for="descricao">Descricao:</label>
                 <select id="descricao" name="descricao">
                     <option value="DETERGENTE">Detergente</option>
                     <option value="CERA">Cera</option>
-                    <option value="SPARY">Spray de Rodas</option>
+                    <option value="SPRAY">Spray de Rodas</option>
                 </select>
 
                 <label for="quantidade">Quantidade:</label>
@@ -75,7 +76,6 @@
             </form>
         </div>
     </div>
-
 </div>
 
 <script src="scripts/produto.js"></script>
