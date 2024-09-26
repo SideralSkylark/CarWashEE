@@ -10,19 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f330a129-d44e-475f-bad5-47559f94dadf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/PrecoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ServicoPlanoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/estilos/cliente.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/scripts/cliente.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/AdicionarProdutoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/EditarProdutoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ObterProdutosServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ProdutoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/RemoverProdutoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/ProdutoDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/Produto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/ProdutoEdicao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/ProdutoRemocao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/TipoProduto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/estilos/produto.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/produto.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/scripts/produto.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ClienteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ClienteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/LogInServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/LogInServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/AgendamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/AgendamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/ServicoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/dao/ServicoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/Agendamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/Agendamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/Servico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cliente.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/EmpresarialServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/EmpresarialServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/empresarial.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/empresarial.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +36,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jsp File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -71,6 +75,9 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -173,7 +180,20 @@
       <workItem from="1726066674120" duration="4000" />
       <workItem from="1726144012226" duration="6875000" />
       <workItem from="1726155959498" duration="11624000" />
-      <workItem from="1726209789966" duration="13000000" />
+      <workItem from="1726209789966" duration="14077000" />
+      <workItem from="1726225090310" duration="303000" />
+      <workItem from="1726234479401" duration="425000" />
+      <workItem from="1726240270311" duration="946000" />
+      <workItem from="1726242615336" duration="18000" />
+      <workItem from="1726556214207" duration="272000" />
+      <workItem from="1726589823346" duration="11000" />
+      <workItem from="1726683903977" duration="109000" />
+      <workItem from="1726731846699" duration="258000" />
+      <workItem from="1726735289199" duration="7000" />
+      <workItem from="1726735523314" duration="206000" />
+      <workItem from="1727029661379" duration="153000" />
+      <workItem from="1727071664434" duration="42000" />
+      <workItem from="1727332588682" duration="8636000" />
     </task>
     <servers />
   </component>

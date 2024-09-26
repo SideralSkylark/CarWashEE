@@ -11,6 +11,11 @@
     <title>empresarial</title>
 </head>
 <body>
-
+<a onclick="abrirTelaProdutos()">abrir tela produtos</a>
+<script>
+    function abrirTelaProdutos() {
+        window.location.href = 'produto';
+    }
+</script>
 </body>
 </html>

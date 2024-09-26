@@ -4,6 +4,7 @@ import com.example.carwashee.dao.DatabaseConnection;
 import com.example.carwashee.dao.UsuarioDAO;
 import com.example.carwashee.model.Usuario;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+@WebServlet(name = "EmpresarialServlet", urlPatterns = {"/empresarial"})
 public class EmpresarialServlet extends HttpServlet {
 
     private Connection connection;
@@ -34,7 +36,7 @@ public class EmpresarialServlet extends HttpServlet {
         HttpSession session = request.getSession();
         usuario = (Usuario) session.getAttribute("usuarioLogado");
 
-        if (usuario == null) {
+        if (usuario != null) {
             abrirTelaEmpresarial(request, response);
         }
     }
