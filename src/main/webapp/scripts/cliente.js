@@ -155,7 +155,7 @@ function updatePreco() {
                 if (data.preco) {
                     const preco = parseFloat(data.preco);
                     if (!isNaN(preco)) {
-                        document.getElementById("preco").value = `R$ ${preco.toFixed(2)}`;
+                        document.getElementById("preco").value = `MZ ${preco.toFixed(2)}`;
                     } else {
                         console.error('Preço inválido recebido:', data.preco);
                         document.getElementById("preco").value = "Preço inválido";

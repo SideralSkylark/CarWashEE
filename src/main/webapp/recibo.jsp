@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"></meta>
     <title>Recibo de Agendamento</title>
     <style>
         body {
@@ -37,10 +37,10 @@
     Servico servico = (Servico) request.getAttribute("servico");
 %>
 
-<h1>Recibo de Agendamento</h1>
+<h1>Recibo da Lavagem</h1>
 
-<p>Agendamento ID: <%= agendamento.getId() %></p>
-<p>Data do Agendamento: <%= agendamento.getData() %></p>
+
+<p style="margin-top: 30px">Data do Agendamento: <%= agendamento.getData() %></p>
 <p>Status: <%= agendamento.getStatus() %></p>
 
 <div class="detalhes">
@@ -56,12 +56,12 @@
             <td><%= servico.getDescricao() %></td>
             <td><%= servico.getTipoServico() %></td>
             <td><%= servico.getPlano() %></td>
-            <td>R$ <%= servico.getPreco() %></td>
+            <td>MZ <%= servico.getPreco() %></td>
         </tr>
     </table>
 </div>
 
-<p>Este é um recibo gerado automaticamente para o seu agendamento de serviços.</p>
+<p>Recibo gerado por computador</p>
 
 </body>
 </html>

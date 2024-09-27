@@ -29,8 +29,8 @@ public class ServicoDAO {
                     Servico servico = new Servico();
                     servico.setId(rs.getInt("id"));
                     servico.setDescricao(rs.getString("descricao"));
-                    servico.setTipoServico(TipoServico.valueOf(rs.getString("tipo_servico")));
-                    servico.setPlano(Plano.valueOf(rs.getString("plano")));
+                    servico.setTipoServico(String.valueOf(TipoServico.valueOf(rs.getString("tipo_servico"))));
+                    servico.setPlano(String.valueOf(Plano.valueOf(rs.getString("plano"))));
                     servico.setPreco(BigDecimal.valueOf(rs.getBigDecimal("preco").doubleValue()));
                     return servico;
                 } else {
@@ -57,8 +57,8 @@ public class ServicoDAO {
     private Servico mapResultSetToServico(ResultSet rs) throws SQLException {
         Servico servico = new Servico();
         servico.setId(rs.getInt("id"));
-        servico.setTipoServico(TipoServico.valueOf(rs.getString("tipo_servico")));
-        servico.setPlano(Plano.valueOf(rs.getString("plano")));
+        servico.setTipoServico(rs.getString("tipo_servico"));
+        servico.setPlano(rs.getString("plano"));
         servico.setDescricao(rs.getString("descricao"));
         servico.setPreco(BigDecimal.valueOf(rs.getDouble("preco")));
         return servico;
@@ -76,8 +76,8 @@ public class ServicoDAO {
                 Servico servico = new Servico();
                 servico.setId(rs.getInt("id"));
                 servico.setDescricao(rs.getString("descricao"));
-                servico.setTipoServico(TipoServico.valueOf(rs.getString("tipo_servico")));
-                servico.setPlano(Plano.valueOf(rs.getString("plano")));
+                servico.setTipoServico(rs.getString("tipo_servico"));
+                servico.setPlano(rs.getString("plano"));
                 servico.setPreco(rs.getBigDecimal("preco"));
                 servicos.add(servico);
             }
@@ -124,8 +124,8 @@ public class ServicoDAO {
                 Servico servico = new Servico();
                 servico.setId(rs.getInt("id"));
                 servico.setDescricao(rs.getString("descricao"));
-                servico.setTipoServico(TipoServico.valueOf(rs.getString("tipo_servico")));
-                servico.setPlano(Plano.valueOf(rs.getString("plano")));
+                servico.setTipoServico(rs.getString("tipo_servico"));
+                servico.setPlano(rs.getString("plano"));
                 servico.setPreco(rs.getBigDecimal("preco"));
                 servicos.add(servico);
             }

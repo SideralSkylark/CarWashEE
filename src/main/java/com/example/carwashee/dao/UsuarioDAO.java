@@ -44,6 +44,27 @@ public class UsuarioDAO {
         return null;
     }
 
+    public List<Usuario> buscarUsuariosComAgendamentosAtivos() throws SQLException {
+        List<Usuario> usuarios = new ArrayList<>();
+        String sql = "SELECT DISTINCT u.id, u.nome, u.email FROM usuarios u " +
+                "JOIN agendamentos a ON u.id = a.usuario_id " +
+                "WHERE a.ativo = 1";
+
+        try (PreparedStatement stmt = conexao.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setEmail(rs.getString("email"));
+                usuarios.add(usuario);
+            }
+        }
+
+        return usuarios;
+    }
+
+
     public Usuario buscarUsuarioPorId(int id) throws SQLException {
         String sql = "SELECT * FROM usuarios WHERE id = ?";
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {

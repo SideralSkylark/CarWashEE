@@ -1,5 +1,10 @@
 package com.example.carwashee.model;
 
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,15 +39,16 @@ public class ProdutoGasto {
             Produto produto = new Produto();
             produto.setTipoProduto(TipoProduto.valueOf("DETERGENTE"));
             produto.setQuantia(2);
-            Produto spary = new Produto();
+            Produto spray = new Produto();
             produto.setTipoProduto(TipoProduto.valueOf("SPRAY"));
             produto.setQuantia(2);
             produtosUsados.add(produto);
-            produtosUsados.add(spary);
+            produtosUsados.add(spray);
         } else if (id_Servico == 3) {
             Produto cera = new Produto();
             cera.setTipoProduto(TipoProduto.valueOf("CERA"));
             cera.setQuantia(5);
+            produtosUsados.add(cera);
         } else if (id_Servico == 4) {
             Produto produto = new Produto();
             produto.setTipoProduto(TipoProduto.valueOf("DETERGENTE"));
@@ -74,16 +80,17 @@ public class ProdutoGasto {
     }
 
     //por no marcar como concluido
-    /*
-    public void concluirAgendamento(int idServico) {
-    ProdutoGasto produtoGasto = new ProdutoGasto(idServico);
+
+    public void concluirAgendamento() {
+    ProdutoGasto produtoGasto = new ProdutoGasto(this.id_Servico);
     List<Produto> produtosUsados = produtoGasto.obterQuantidadeGasta();
 
     // Para cada produto usado, envie uma requisição de atualização
     for (Produto produto : produtosUsados) {
         try {
+            System.out.println("Tipo prod: " + produto.getTipoProduto() + ", Quantia: " + produto.getQuantia());
             // Cria a URL do servlet
-            URL url = new URL("http://localhost:8080/atualizarProduto");
+            URL url = new URL("http://localhost:8080/CarwashEE_war_exploded/atualizarProduto");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("PUT");
             con.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -111,9 +118,6 @@ public class ProdutoGasto {
             e.printStackTrace();
         }
     }
-
-    // Marcar o agendamento como concluído
-    marcarAgendamentoComoConcluido(idServico);
 }
-    */
+
 }

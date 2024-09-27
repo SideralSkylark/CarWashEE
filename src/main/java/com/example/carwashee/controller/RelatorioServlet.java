@@ -2,10 +2,8 @@ package com.example.carwashee.controller;
 
 import com.example.carwashee.dao.AgendamentoDAO;
 import com.example.carwashee.dao.DatabaseConnection;
-import com.example.carwashee.dao.ServicoDAO;
 import com.example.carwashee.dao.UsuarioDAO;
 import com.example.carwashee.model.Agendamento;
-import com.example.carwashee.model.Servico;
 import com.example.carwashee.model.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,16 +13,18 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
-@WebServlet(name = "EmpresarialServlet", urlPatterns = {"/EmpresarialServlet"})
-public class EmpresarialServlet extends HttpServlet {
 
+@WebServlet(name = "RelatorioServlet", urlPatterns = {"/telaRelatorio"})
+public class RelatorioServlet extends HttpServlet {
     private Connection connection;
     private UsuarioDAO usuarioDAO;
     private AgendamentoDAO agendamentoDAO;
+    private double lucros;
+    private List<Agendamento> agendamentos;
 
     @Override
     public void init() {
@@ -40,7 +40,7 @@ public class EmpresarialServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        String status = request.getParameter("status"); // Parâmetro para o status
+        String periodo = request.getParameter("periodo");
         HttpSession session = request.getSession();
         Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
 
@@ -50,14 +50,29 @@ public class EmpresarialServlet extends HttpServlet {
         }
 
         try {
-            List<Agendamento> agendamentos;
-
-            if (status != null && !status.isEmpty()) {
-                // Busca agendamentos filtrados por status
-                agendamentos = agendamentoDAO.buscarAgendamentosPorStatus(status);
+            if (periodo != null && !periodo.isEmpty()) {
+                switch (periodo) {
+                    case "SEMANA" -> {
+                        agendamentos = agendamentoDAO.obterAgendamentosSemana();
+                        lucros = obterLucros(agendamentos);
+                    }
+                    case "MEZ" -> {
+                        agendamentos = agendamentoDAO.obterAgendamentosMez();
+                        lucros = obterLucros(agendamentos);
+                        ;
+                    }
+                    case "ANO" -> {
+                        agendamentos = agendamentoDAO.obterAgendamentosAno();
+                        lucros = obterLucros(agendamentos);
+                    }
+                    case "" -> {
+                        agendamentos = agendamentoDAO.obterAgendamentosDia();
+                        lucros = obterLucros(agendamentos);
+                    }
+                }
             } else {
-                // Busca todos os agendamentos ativos
-                agendamentos = agendamentoDAO.buscarTodosAgendamentos();
+                agendamentos = new ArrayList<>();
+                lucros = 0;
             }
 
             for (Agendamento agendamento : agendamentos) {
@@ -66,10 +81,30 @@ public class EmpresarialServlet extends HttpServlet {
             }
 
             request.setAttribute("agendamentos", agendamentos);
-            request.getRequestDispatcher("empresarial.jsp").forward(request, response);
+            request.setAttribute("lucros", lucros);
+            request.getRequestDispatcher("telaRelatorio.jsp").forward(request, response);
         } catch (SQLException e) {
             throw new ServletException("Erro ao buscar agendamentos", e);
         }
+    }
+
+    private double obterLucros(List<Agendamento> agendamentos) {
+        double resultado = 0;
+        for (Agendamento agendamento : agendamentos) {
+            if (agendamento.getServicoId() == 1) {
+                resultado += 50;
+            } else if (agendamento.getServicoId() == 2) {
+                resultado += 120;
+            } else if (agendamento.getServicoId() == 3) {
+                resultado +=200;
+            } else if (agendamento.getServicoId() == 4) {
+                resultado +=250;
+            } else {
+                resultado += 150;
+            }
+        }
+
+        return resultado;
     }
 
     @Override

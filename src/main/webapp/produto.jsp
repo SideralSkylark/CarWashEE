@@ -22,7 +22,9 @@
             <input type="hidden" id="idUsuario" value="${sessionScope.idUsuario}">
         </div>
         <ul>
+            <li><a onclick="abrirTelaGeral()">Geral</a></li>
             <li><a onclick="abrirTelaProdutos()">Produtos</a></li>
+            <li><a onclick="abrirTelaRelatorio()">Relatorio</a></li>
             <li><a href="index.jsp">Sair</a></li>
         </ul>
     </nav>
@@ -30,6 +32,14 @@
     <script>
         function abrirTelaProdutos() {
             window.location.href = 'produto';
+        }
+
+        function abrirTelaGeral() {
+            window.location.href = 'EmpresarialServlet'
+        }
+
+        function abrirTelaRelatorio() {
+            window.location.href = 'telaRelatorio'
         }
     </script>
 
