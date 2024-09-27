@@ -9,12 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f330a129-d44e-475f-bad5-47559f94dadf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/controller/ImprimirReciboServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/carwashee/model/ProdutoGasto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f330a129-d44e-475f-bad5-47559f94dadf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,11 +18,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -197,7 +192,7 @@
       <workItem from="1727029661379" duration="153000" />
       <workItem from="1727071664434" duration="42000" />
       <workItem from="1727332588682" duration="10178000" />
-      <workItem from="1727351293371" duration="9051000" />
+      <workItem from="1727351293371" duration="9657000" />
     </task>
     <servers />
   </component>
